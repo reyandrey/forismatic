@@ -1,4 +1,6 @@
-# Forismatic API
-<host>/?method=getQuote&key=999999&format=json&lang=ru
-  
+# Is an iOS app that provide forismatic random quotes API
+# Use MVVM + Coordinator 
+
+
+
 https://www.forismatic.com/blog/category/api/
