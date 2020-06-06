@@ -8,34 +8,44 @@
 
 import Foundation
 
-class ControllerViewModel {
-    //MARK: - Initial Values, Dependencies
+class QuoteViewModel {
+    
+    let api = QuotesService<FSMEnvironment>()
     
     //MARK: - Lifeycle
-    init() {
-        
-    }
+    init() {}
     
     var didError: ((Error) -> Void)?
-    var didUpdate: ((ControllerViewModel) -> Void)?
+    var didUpdate: ((QuoteViewModel) -> Void)?
     
     private(set) var isUpdating: Bool = false { didSet { self.didUpdate?(self) } }
     
     //MARK: - Properties
    
-    // ViewModels, CellRepresentable
+    private var quote: Quote?
     
+    var title: String {
+        return isUpdating ? "Загрузка.." : "Случайная цитата"
+    }
+    
+    var quoteText: String {
+        quote?.quoteText ?? ""
+    }
+    
+    var quoteAuthor: String {
+        guard let author = quote?.quoteAuthor else { return "..." }
+        return author.isEmpty ? "..." : author
+    }
     
     //MARK: - Actions
     func reloadData() {
         self.isUpdating = true
-    /*  api.FetchData()
-        Success:
-            init ViewModels for fetched data
-            self.isUpdating = false
-         Failure:
-            self.didError?(error)
-            self.isUpdating = false */
+        api.getRandomQuote(key: Int.random(in: 0...999999)) { [weak self] quote in
+            DispatchQueue.main.async {
+                self?.quote = quote
+                self?.isUpdating = false
+            }
+        }
     }
  
 }

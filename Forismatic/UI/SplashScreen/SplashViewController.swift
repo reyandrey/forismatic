@@ -13,19 +13,21 @@ class SplashViewController: UIViewController, Storyboardable {
     static var storyboardName: String { return "SplashScreen" }
     
 
-    @IBOutlet weak var logoView: UIView!
+    @IBOutlet weak var logoLabelWhite: UILabel!
+    @IBOutlet weak var logoLabelBlue: UILabel!
     var completionHandler: (() -> Void)? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.logoView.layer.opacity = 0
-        UIView.animate(withDuration: 1.5, animations: {
-            self.logoView.layer.opacity = 100
-            self.logoView.layoutIfNeeded()
+        UIView.animate(withDuration: 2, delay: 0, options: [], animations: {
+            self.logoLabelWhite.alpha = 0
+            self.logoLabelBlue.alpha = 1
+            self.view.backgroundColor = .white
         }) { _ in
             self.completionHandler?()
         }
+        
     }
 
 }
