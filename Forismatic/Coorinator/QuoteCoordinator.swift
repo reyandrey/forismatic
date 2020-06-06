@@ -13,11 +13,11 @@ import UIKit
 class QuoteCoordinator: Coordinator {
     
     private var window: UIWindow? { UIApplication.shared.keyWindow }
-    var navigationController: UINavigationController!
+    var navigationController: NavigationController!
     
     func start() {
         guard let window = window, let snapshot = window.snapshotView(afterScreenUpdates: true) else { return }
-        navigationController = UINavigationController(rootViewController: initQuoteViewController())
+        navigationController = NavigationController(rootViewController: initQuoteViewController())
         navigationController.view.addSubview(snapshot)
         window.rootViewController = navigationController
         UIView.animate(withDuration: 0.33, animations: {

@@ -9,7 +9,10 @@
 import Foundation
 
 enum APIServiceError: Error {
-    case invalidURL
+    case clientError(code: Int)
+    case serverError(code: Int)
+    case networkError(error: Error)
+    case invalidURLError
     case other
 }
 

@@ -16,13 +16,16 @@ class QuoteTimer {
     private var time: Double = 0 {
         didSet { didUpdateProgress?(CGFloat(time/timeInterval * 100)) }
     }
-    
     var onPause: Bool = false {
         didSet { handlePause() }
     }
     
     var didUpdateProgress: ((CGFloat) -> Void)? = nil
     var didCountdown: (() -> Void)? = nil
+    
+    deinit {
+        self.timer?.invalidate()
+    }
     
     func start() {
         timer = Timer.scheduledTimer(timeInterval: timeintervalToUpdate, target: self, selector: #selector(handleUpdate(_:)), userInfo: nil, repeats: true)
@@ -34,7 +37,14 @@ class QuoteTimer {
         time = 0
     }
     
-    private func handlePause() {
+}
+
+
+// MARK: Private
+
+private extension QuoteTimer {
+    
+    func handlePause() {
         if onPause { timer?.invalidate() }
         else { start() }
     }
@@ -43,4 +53,5 @@ class QuoteTimer {
         time += timeintervalToUpdate
         guard time <= timeInterval else { reset(); didCountdown?(); return }
     }
+    
 }

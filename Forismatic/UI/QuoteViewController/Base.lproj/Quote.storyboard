@@ -38,8 +38,8 @@
                                             <constraint firstAttribute="width" constant="44" id="1zn-EA-Vaq"/>
                                         </constraints>
                                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <state key="normal" image="link" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium"/>
+                                        <state key="normal" image="arrow.up.right.square" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
                                     </button>
                                 </subviews>
@@ -93,6 +93,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="link" catalog="system" width="64" height="58"/>
+        <image name="arrow.up.right.square" catalog="system" width="64" height="56"/>
     </resources>
 </document>

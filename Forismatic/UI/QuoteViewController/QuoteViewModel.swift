@@ -17,7 +17,6 @@ class QuoteViewModel {
     
     var didError: ((Error) -> Void)?
     var didUpdate: ((QuoteViewModel) -> Void)?
-    
     private(set) var isUpdating: Bool = false { didSet { self.didUpdate?(self) } }
     
     //MARK: - Properties

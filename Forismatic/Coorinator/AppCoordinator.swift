@@ -36,7 +36,7 @@ private extension AppCoordinator {
     
     func showMain() {
         quoteCoordinator = QuoteCoordinator()
-        quoteCoordinator?.navigationController = UINavigationController()
+        quoteCoordinator?.navigationController = NavigationController()
         quoteCoordinator?.start()
     }
     

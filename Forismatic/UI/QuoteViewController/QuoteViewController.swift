@@ -15,21 +15,27 @@ class QuoteViewController: UIViewController, Storyboardable {
     typealias T = QuoteViewController
     static var storyboardName: String { return "Quote" }
 
+    private let timer: QuoteTimer = QuoteTimer()
     weak var delegate: QuoteViewControllerDelegate?
     var viewModel: QuoteViewModel!
     
-    private let timer: QuoteTimer = QuoteTimer()
+    // MARK: IBOutlet
+    
     @IBOutlet private weak var progressView: StoryIndicatorView!
     @IBOutlet private weak var quoteDimmingView: UIView!
     @IBOutlet private weak var quoteTextLabel: UILabel!
     @IBOutlet private weak var quoteAuthorLabel: UILabel!
     @IBOutlet private weak var linkButton: UIButton!
     
+    // MARK: View lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-        bindViewModel()
-        viewModel.reloadData()
+        if #available(iOS 13.0, *) {
+            setup()
+            bindViewModel()
+            viewModel.reloadData()
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -42,6 +48,7 @@ class QuoteViewController: UIViewController, Storyboardable {
 //MARK: ViewModel
 
 extension QuoteViewController {
+    
     func bindViewModel() {
         viewModel.didUpdate = { [weak self] viewModel in
             self?.didUpdate(viewModel)
@@ -50,7 +57,7 @@ extension QuoteViewController {
     
     func didUpdate(_ viewModel: QuoteViewModel) {
         DispatchQueue.main.asyncAfter(deadline: .now() + (viewModel.isUpdating ? 0:0.33)) { [weak self] in
-            self?.title = viewModel.title
+            //self?.title = viewModel.title
             viewModel.isUpdating ? self?.setUpdating() : self?.setUpdated()
         }
         
@@ -60,11 +67,16 @@ extension QuoteViewController {
 //MARK: Private
 
 extension QuoteViewController {
+    
+    @available(iOS 13.0, *)
     func setup() {
         linkButton.isHidden = true
         linkButton.addTarget(self, action: #selector(quoteLinkDidTap(_:)), for: .touchUpInside)
-        
         quoteDimmingView.alpha = 0
+        let image = UIImage(systemName: "pause.fill", withConfiguration: nil)
+        let playPauseButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(pauseDidTap(_:)))
+        playPauseButton.tintColor = .white
+        navigationItem.setRightBarButton(playPauseButton, animated: false)
         
         timer.didCountdown = { [weak self] in
             self?.viewModel.reloadData()
@@ -72,9 +84,7 @@ extension QuoteViewController {
         timer.didUpdateProgress = { [weak self] progress in
             self?.timerDidUpdateProgress(progress)
         }
-        let playPauseButton = UIBarButtonItem(title: "Pause", style: .plain, target: self, action: #selector(pauseDidTap(_:)))
-        playPauseButton.tintColor = UIColor(named: "primaryBlue")
-        navigationItem.setRightBarButton(playPauseButton, animated: false)
+        
     }
     
     func setUpdating() {
@@ -99,9 +109,12 @@ extension QuoteViewController {
     }
     
     
+    @available(iOS 13.0, *)
     @objc func pauseDidTap(_ sender: Any) {
         timer.onPause = !timer.onPause
-        navigationItem.rightBarButtonItem?.title = timer.onPause ?  "Resume" : "Pause"
+        let playImage = UIImage(systemName: "play.fill", withConfiguration: nil)
+        let pauseImage = UIImage(systemName: "pause.fill", withConfiguration: nil)
+        navigationItem.rightBarButtonItem?.image = timer.onPause ?  playImage : pauseImage
     }
     
     @objc func quoteLinkDidTap(_ sender: Any) {

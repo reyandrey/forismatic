@@ -24,11 +24,11 @@ class QuotesService<E: Environment>: APIService {
     
     
     func getURL(for endpoint: APIEndpoint) throws -> URL {
-        guard let url = URL(string: E.serverURL.appending(endpoint.path)) else { throw APIServiceError.invalidURL }
+        guard let url = URL(string: E.serverURL.appending(endpoint.path)) else { throw APIServiceError.invalidURLError }
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
         components?.queryItems = endpoint.queryItems
         if let components = components, let url = components.url { return url }
-        else { throw APIServiceError.invalidURL }
+        else { throw APIServiceError.invalidURLError }
     }
 }
 
