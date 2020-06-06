@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		551B4CAF248B4C5000313318 /* QuoteTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551B4CAE248B4C5000313318 /* QuoteTimer.swift */; };
 		5569266F248ACB3B00BEC299 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5569266E248ACB3B00BEC299 /* AppCoordinator.swift */; };
 		55692673248ACCE400BEC299 /* QuoteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55692672248ACCE400BEC299 /* QuoteCoordinator.swift */; };
 		55692677248AE25400BEC299 /* QuotesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55692676248AE25400BEC299 /* QuotesAPI.swift */; };
 		55692679248AE7C900BEC299 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55692678248AE7C900BEC299 /* String+Extensions.swift */; };
 		5569267B248AEA5F00BEC299 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5569267A248AEA5F00BEC299 /* APIService.swift */; };
 		55692680248B042F00BEC299 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5569267F248B042F00BEC299 /* UIView+Extension.swift */; };
+		55692682248B42BC00BEC299 /* StoryIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55692681248B42BC00BEC299 /* StoryIndicatorView.swift */; };
 		559A5E28248285FD0056D973 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559A5E27248285FD0056D973 /* AppDelegate.swift */; };
 		559A5E2C248285FD0056D973 /* QuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559A5E2B248285FD0056D973 /* QuoteViewController.swift */; };
 		559A5E2F248285FD0056D973 /* Quote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 559A5E2D248285FD0056D973 /* Quote.storyboard */; };
@@ -30,12 +32,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		551B4CAE248B4C5000313318 /* QuoteTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteTimer.swift; sourceTree = "<group>"; };
 		5569266E248ACB3B00BEC299 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		55692672248ACCE400BEC299 /* QuoteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteCoordinator.swift; sourceTree = "<group>"; };
 		55692676248AE25400BEC299 /* QuotesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesAPI.swift; sourceTree = "<group>"; };
 		55692678248AE7C900BEC299 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		5569267A248AEA5F00BEC299 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		5569267F248B042F00BEC299 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		55692681248B42BC00BEC299 /* StoryIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryIndicatorView.swift; sourceTree = "<group>"; };
 		559A5E24248285FD0056D973 /* Forismatic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forismatic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		559A5E27248285FD0056D973 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		559A5E2B248285FD0056D973 /* QuoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 				559A5E2D248285FD0056D973 /* Quote.storyboard */,
 				559A5E2B248285FD0056D973 /* QuoteViewController.swift */,
 				559A5E3E24828C6D0056D973 /* QuoteViewModel.swift */,
+				55692681248B42BC00BEC299 /* StoryIndicatorView.swift */,
+				551B4CAE248B4C5000313318 /* QuoteTimer.swift */,
 			);
 			path = QuoteViewController;
 			sourceTree = "<group>";
@@ -257,8 +263,10 @@
 				559C44C82488D6CB00E9A75C /* QuotesService.swift in Sources */,
 				55692680248B042F00BEC299 /* UIView+Extension.swift in Sources */,
 				559A5E3F24828C6D0056D973 /* QuoteViewModel.swift in Sources */,
+				551B4CAF248B4C5000313318 /* QuoteTimer.swift in Sources */,
 				559A5E4B2482A8810056D973 /* UIViewController+Extensions.swift in Sources */,
 				559A5E4E2482B6130056D973 /* UIStoryboard+Extensions.swift in Sources */,
+				55692682248B42BC00BEC299 /* StoryIndicatorView.swift in Sources */,
 				5569267B248AEA5F00BEC299 /* APIService.swift in Sources */,
 				559A5E4224828D8C0056D973 /* Environment.swift in Sources */,
 				559A5E462482A2150056D973 /* SplashViewController.swift in Sources */,

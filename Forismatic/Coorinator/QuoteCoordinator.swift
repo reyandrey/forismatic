@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SafariServices
 import UIKit
 
 class QuoteCoordinator: Coordinator {
@@ -28,12 +29,29 @@ class QuoteCoordinator: Coordinator {
     
 }
 
+// MARK: Private
+
 private extension QuoteCoordinator {
     
     func initQuoteViewController() -> QuoteViewController {
         let vc = QuoteViewController.instantiate()
         vc.viewModel = QuoteViewModel()
+        vc.delegate = self
         return vc
+    }
+    
+}
+
+// MARK: QuoteViewControllerDelegate
+extension QuoteCoordinator: QuoteViewControllerDelegate {
+    
+    func controller(_ controller: QuoteViewController, shouldOpenURL url: URL) {
+        let svc = SFSafariViewController(url: url)
+        svc.dismissButtonStyle = .done
+        svc.preferredControlTintColor = UIColor(named: "primaryBlue")
+        svc.title = "Forismatic"
+        svc.modalPresentationStyle = .overFullScreen
+        controller.present(svc, animated: true, completion: nil)
     }
     
 }

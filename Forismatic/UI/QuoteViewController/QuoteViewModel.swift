@@ -25,7 +25,7 @@ class QuoteViewModel {
     private var quote: Quote?
     
     var title: String {
-        return isUpdating ? "Загрузка.." : "Случайная цитата"
+        return isUpdating ? "Loading.." : "Random quote"
     }
     
     var quoteText: String {
@@ -35,6 +35,10 @@ class QuoteViewModel {
     var quoteAuthor: String {
         guard let author = quote?.quoteAuthor else { return "..." }
         return author.isEmpty ? "..." : author
+    }
+    
+    var quoteLink: String? {
+        return quote?.quoteLink
     }
     
     //MARK: - Actions
